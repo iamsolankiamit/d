@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pi.name %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @pi.uid %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @pi.group_id %>
+</p>
+
+<%= link_to 'Edit', edit_pi_path(@pi) %> |
+<%= link_to 'Back', pis_path %>

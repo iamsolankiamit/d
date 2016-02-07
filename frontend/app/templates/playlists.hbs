@@ -1,0 +1,7 @@
+{{outlet}}
+<div class="panel-heading">
+	<h4 class="text-center">Playlist</h4>
+</div>
+<ul class="list-group">
+{{#each model as |p| }} <li class="list-group-item">{{p.name}}</li>{{/each}}
+</ul>

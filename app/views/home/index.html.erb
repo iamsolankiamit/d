@@ -1,40 +1,30 @@
-
-<div style="position:absolute; left:0;top:0;width: 10%; height:80%;background:green;overflow:hidden;">
-	<%= image_tag(@dsn.left_photo.url(:original))%>
-</div>
-<div style="position:absolute; left:10%;top:0;width: 80%; height:80%;background:black; overflow:hidden;">
-<%# videojs_rails sources: { mp4: video_url('1.mp4') },width:"400" do %>
-   <!--  Please enable <b>JavaScript</b> to see this content. -->
-<%# end %>
-<video loop="loop" id="pretzel-video" autoplay style="height: auto;width:100%;">
-  <!-- <source src="<%= asset_path("1.mp4")%>" type="video/mp4"/> -->
-  <!-- <source src="<%= asset_path("1.webm")%>" type="video/webm" /> -->
-  <source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm">
-  <!-- <source src="https://a0.muscache.com/airbnb/static/Seoul-P1-4.webm" type="video/webm"> -->
-</video>
-
-<%# video_tag @dsn.signage_video.url(:webm)%>
-<!-- <video autobuffer="autobuffer" autoplay="autoplay" width="480" height="320"
-controls="controls" preload="auto" loop="loop" style="height:auto;width:100%;bottom:0;position:absolute;">
-  <source src="<%= video_url('1.mp4') %>" type="video/mp4" />
-</video> -->
-</div>
-<div style="position:absolute; right:0;top:0;width: 10%; height:80%;background:green;overflow:hidden;">
-	<%= image_tag(@dsn.right_photo.url(:original))%>
-</div>
-<div style="position:absolute; left:0;right:0;bottom:0;width: 100%; height:20%;background:red;overflow:hidden;">
-	<div style="position:absolute; left:0;right:0;top:0; width:100%;height:70%;background:grey; overflow:hidden;">
-	<%= image_tag @dsn.bottom_photo.url(:original) , width: "100%"%>
+<header>
+	<div class="logo">
+		<!-- Logo here -->
 	</div>
-	<div style="position:absolute; left:0;right:0;bottom:0; width:100%;height:30%;background:black; overflow:hidden;">
-		<div class="marquee"> <%= @dsn.margue %></div>
+	<div class="left-menu">
+		<!-- Login Logout settings menu here -->
+	</div>
+</header>
+
+<div class="main">
+	<div class="side-menubar">
+		<ul>
+			<li>Playlist</li>
+			<li>Groups</li>
+			<li>Content</li>
+			<li>Manage Signages</li>
+		</ul>
+	</div>
+	<div class="content">
+		<div class="panel">
+			<div class="panel-heading">
+				<h4>Playlist</h4>
+			</div>
+			<div class="panel-content">
+				<button><i class="fa fa-plus"></i>Add playlist</button>
+			</div>
+		</div>
 	</div>
 </div>
-<style type="text/css">
-	.marquee {
-    font-size: 36px;
-    font-weight: 900;
-    color: white;
-    padding-top: 10px;
-	}
-</style>
+

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem "ember-cli-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
@@ -13,10 +13,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # gem "mediaelement_rails"
 # Use jquery as the JavaScript library
-gem 'videojs_rails'
+gem 'active_model_serializers'
+gem 'bootstrap-sass'
 gem 'paperclip'
-gem 'paperclip-av-transcoder'
-gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'jbuilder'
+gem 'rails_admin'
 gem 'devise'
 gem 'cancancan'
 gem 'jquery-rails'

@@ -1,8 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  get 'home/index'
+  mount_ember_app :frontend, to: "/"
+    
+    namespace :api do
+      namespace :v1 do
+        resources :playlists
+      end
+    end
 
+  resources :groups
+  resources :pis
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :videos
+  resources :playlists
+  resources :photos
+  resources :designs
+  get 'home/index'
+  get 'version/index'
+  resources :files
+  match "files/layout" => "files#layout", via: :get
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

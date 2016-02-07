@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require video
 //= require marquee
 //= require_tree .
+//= require bootstrap-sprockets
