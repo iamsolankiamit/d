@@ -1,7 +1,13 @@
-{{outlet}}
+
 <div class="panel-heading">
-	<h4 class="text-center">Playlist</h4>
+<div class="row">
+<div class="col-sm-4"><button class="btn">Back</button></div>
+<div class="col-sm-4"><h4 class="text-center">Playlists</h4></div>
+<div class="col-sm-4 text-right"><button class="btn btn-primary">Save</button></div>
+</div>
 </div>
 <ul class="list-group">
-{{#each model as |p| }} <li class="list-group-item">{{p.name}}</li>{{/each}}
+
+{{#each model as |p| }} <li class="list-group-item">{{#link-to 'playlist' p.id}}{{p.name}}{{/link-to}}</li>{{/each}}
 </ul>
+{{outlet}}
