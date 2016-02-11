@@ -1,0 +1,6 @@
+<div class="link-split" data-id="<%= playlist.id %>">
+					<div class="row">
+					<div class="col-sm-10"><h5><%= link_to playlist.name.titlecase, playlist_path(playlist) %> </h5></div>
+            <div class="col-sm-2 text-right"> <%= link_to "Delete Playlist", playlist_path(playlist), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
+            </div>
+					</div>

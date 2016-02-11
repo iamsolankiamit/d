@@ -1,14 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="/" class="list-group-item">Playlist</a>
+        <a href="/groups" class="list-group-item active">Groups</a>
+        <a href="/pis" class="list-group-item">Manage Signages</a>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+			<div class="row">
+          <div class="col-sm-2"><a href="/groups" class="btn btn-default">Back to All Groups</a></div>
+          <div class="col-sm-8"><h4 class="text-center">Set Playlist for <%= @group.name %></h4></div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="link-split">
+          <div class="row">
+			<%= form_for @group, remote: true, class: "form-horizontal" do |f| %>
+				<div class="form-group">
+					<label for="playlist" class="col-sm-3 control-label">Select a Playlist</label>
+    <div class="col-sm-8">
+      <%= collection_select(:group, :playlist_id, Playlist.all, :id, :name, {:prompt => 'Please select Playlist'}, {class: "form-control"}) %>
+    </div>
+    </div>
+    <div class="row" style="margin-bottom:-15px;">
+    <div class="col-sm-12"><button class="btn btn-success btn-block">Deploy Selected Playlist</button></div>
+    </div>
+				</div>
+			<% end %>
+          </div>
+        </div>
+        <!-- <div class="panel-footer"><button class="btn btn-success">Save</button></div> -->
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
 
-<p>
-  <strong>Playlist:</strong>
-  <%= @group.playlist_id %>
-</p>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

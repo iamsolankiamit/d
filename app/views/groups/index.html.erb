@@ -1,29 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="/" class="list-group-item">Playlist</a>
+        <a href="/groups" class="list-group-item active">Groups</a>
+        <a href="/pis" class="list-group-item">Manage Signages</a>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4 class="text-center">Groups</h4></div>
+        <div class="panel-body">
+        <div class="group-container">
+        <% @groups.each do |group| %>
+          <div class="link-split" data-id="<%= group.id %>">
+          <div class="row">
+            <div class="col-sm-10"><h5><%= link_to group.name.titlecase, group_path(group) %> </h5></div>
+            <div class="col-sm-2 text-right"> <%= link_to "Delete Group", group_path(group), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
+          </div>
+          </div>
+          <% end %>
+          </div>
+          <div class="link-split text-center">
+            <a data-target="#groupModal" data-toggle="modal" class="btn btn-primary text-center">Add group</a>
+          </div>
+        </div>
+        <!-- <div class="panel-footer"><button class="btn btn-success">Save</button></div> -->
+      </div>
+    </div>
+  </div>
+</div>
 
-<h1>Listing Groups</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Playlist</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.playlist_id %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- Group Modal -->
+<div class="modal fade" id="groupModal" tabindex="-1" role="dialog" aria-labelledby="groupModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="groupModalLabel">Add a new Group</h4>
+      </div>
+        <%= form_for :group, url: "/groups", method: "post", remote: true do |f| %>
+      <div class="modal-body">
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name , class: "form-control" %>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" value="save" class="btn btn-primary">Save changes</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Group', new_group_path %>
+<style>
+  .link-split {
+    border-bottom: 1px solid #eee;
+    padding:10px 20px 20px 20px;
+    margin:0px -15px;
+  }
+</style>

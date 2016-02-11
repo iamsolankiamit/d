@@ -1,19 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="/" class="list-group-item">Playlist</a>
+        <a href="/groups" class="list-group-item">Groups</a>
+        <a href="/pis" class="list-group-item active">Manage Signages</a>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4 class="text-center">Manage Signages</h4></div>
+        <div class="panel-body">
+        <div class="pis-container">
+          <div class="link-split">
+          <div class="row">
+            <div class="col-sm-9"><h5><%= link_to @pi.name.titlecase, pi_path(@pi) %> </h5></div>
+            <div class="col-sm-3 text-right"> <%= link_to "Delete Signage", pi_path(pi), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @pi.name %>
-</p>
-
-<p>
-  <strong>Uid:</strong>
-  <%= @pi.uid %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @pi.group_id %>
-</p>
-
-<%= link_to 'Edit', edit_pi_path(@pi) %> |
-<%= link_to 'Back', pis_path %>
+<style>
+  .link-split {
+    border-bottom: 1px solid #eee;
+    padding:10px 20px 20px 20px;
+    margin:0px -15px;
+  }
+</style>

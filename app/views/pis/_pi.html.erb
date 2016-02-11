@@ -1,0 +1,6 @@
+<div class="link-split" data-id="<%= pi.id %>">
+          <div class="row">
+            <div class="col-sm-9"><h5><%= link_to pi.name.titlecase, pi_path(pi) %> </h5></div>
+            <div class="col-sm-3 text-right"> <%= link_to "Delete Signage", pi_path(pi), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
+          </div>
+          </div>

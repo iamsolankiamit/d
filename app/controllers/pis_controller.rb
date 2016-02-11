@@ -30,6 +30,7 @@ class PisController < ApplicationController
       if @pi.save
         format.html { redirect_to @pi, notice: 'Pi was successfully created.' }
         format.json { render :show, status: :created, location: @pi }
+        format.js { render "created"}
       else
         format.html { render :new }
         format.json { render json: @pi.errors, status: :unprocessable_entity }
@@ -44,6 +45,7 @@ class PisController < ApplicationController
       if @pi.update(pi_params)
         format.html { redirect_to @pi, notice: 'Pi was successfully updated.' }
         format.json { render :show, status: :ok, location: @pi }
+        format.js { render "updated"}
       else
         format.html { render :edit }
         format.json { render json: @pi.errors, status: :unprocessable_entity }
@@ -58,6 +60,7 @@ class PisController < ApplicationController
     respond_to do |format|
       format.html { redirect_to pis_url, notice: 'Pi was successfully destroyed.' }
       format.json { head :no_content }
+      format.js {render "destroy"}
     end
   end
 

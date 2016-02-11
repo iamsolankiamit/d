@@ -1,0 +1,7 @@
+<div class="link-split" data-id="<%= video.id %>">
+					<div class="row">
+						<div class="col-sm-2"><%= image_tag video.movie.url(:thumb) %> </div>
+						<div class="col-sm-8"><%= link_to video.movie_file_name, video.movie.url(:original) %></div>
+						<div class="col-sm-2"><%= link_to "Delete Video", video_path(video), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
+					</div>
+					</div>

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem "ember-cli-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
@@ -21,7 +20,8 @@ gem 'rails_admin'
 gem 'devise'
 gem 'cancancan'
 gem 'jquery-rails'
-
+gem "nested_form"
+gem 'remotipart', '~> 1.2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

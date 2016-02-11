@@ -1,0 +1,4 @@
+<% if remotipart_submitted? %>
+$('.video-container').append("<%= escape_javascript(render 'video', video: @video) %>");
+$('#videoModal').modal('toggle');
+<% end %>
