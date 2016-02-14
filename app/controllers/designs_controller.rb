@@ -2,9 +2,10 @@ class DesignsController < ApplicationController
  skip_before_action :verify_authenticity_token
 	def show
 		@design = Design.find(params[:id])
-		if @design.layout_type == "a"
-			render layout: "a"
-		end
+    respond_to do |format|
+      format.html { render layout: "a" }
+      format.json {render json: @design }
+    end
 	end
 
    def update

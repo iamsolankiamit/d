@@ -2,7 +2,11 @@ class VideosController < ApplicationController
  skip_before_action :verify_authenticity_token
 before_action :set_video, only: [:destroy]
 
-	def create
+  def show
+    @video = Video.find(params[:id])
+  end
+	
+  def create
 		@video = Video.new(video_params)
 		respond_to do |format|
 			if @video.save

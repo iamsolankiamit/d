@@ -1,5 +1,5 @@
 class PisController < ApplicationController
-  before_action :set_pi, only: [:show, :edit, :update, :destroy]
+  before_action :set_pi, only: [:edit, :update, :destroy]
 
   # GET /pis
   # GET /pis.json
@@ -10,6 +10,10 @@ class PisController < ApplicationController
   # GET /pis/1
   # GET /pis/1.json
   def show
+    @pi = Pi.find_by(uid: params[:id])
+    respond_to do |format|
+      format.json { render json: @pi }
+    end
   end
 
   # GET /pis/new

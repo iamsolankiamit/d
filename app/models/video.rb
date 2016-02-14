@@ -9,4 +9,7 @@ class Video < ActiveRecord::Base
 
 	validates_attachment_content_type :movie, :content_type => ["video/mp4", "video/webm", "video/flv", "video/mpeg"]
 
+  def movie_url
+  	self.movie.url(:original)
+  end
 end

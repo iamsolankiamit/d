@@ -11,9 +11,12 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @design = Design.find(@playlist.design_id) if @playlist.design_id != nil
     @d = Design.new
-
     @design ||= @d
 
+    respond_to do |format|
+      format.html
+      format.json {render json: @playlist}
+    end
     # @design.photos
   end
 
