@@ -2,38 +2,6 @@
 <div class="width-100 height-100 absolute"></div>
 <% elsif @design.layout_type == "a"
 	 %>
-	 <div class="width-100 height-75 left absolute">
-	 <div class="width-75 height-75 left absolute"></div>
-	 <div class="width-25 height-75 right absolute">
-	 	<% unless @design.photos.nil? %>
-	 		<% if @design.slider == true %>
-	 		<div id="imageSlider">
-				<% @design.photos.each do |photo| %>
-					<%= image_tag photo.image.url(:original) , width: "100%" , height: "100%" %>
-				<% end %>
-				
-			</div>
-			<% else %>
-				<%= image_tag @design.photos.first.image.url(:original), width: "100%", height: "100%" %>
-	 		<% end %>
-	 	<% end %>
-	 </div>
-	 </div>
-	 <div class="width-100 height-25 absolute bottom">
-	 <% if @design.slider == true %>
-	 <div id="textSlider" style="height:100px">
-	 	<% @design.photos.each do |photo| %>
-	 		<h4 class="slideText text-center" style="font-size:50px; font-weight:bold"><%= photo.title %></h4>
-	 	<% end %>
-	 </div>
-	 <% end %>
-	 <% if @design.ticker == true %>
-	 <div>
-	 <div class="marquee" style=" height: 100px;width:100%; background: red;"><p style=" color: white; font-weight:bold; font-size:50px;margin:10px 0px 0px 0px;"><%= @design.ticker_text %></p> </div>
-	 </div>
-	 <% end %>
-	 </div>
-<% end %>
 
 <style>
 .bottom {
@@ -107,3 +75,56 @@ jQuery(document).ready(function(){
 
 	
 </script>
+	 <div class="width-100 height-75 left absolute">
+	 <div class="width-75 height-75 left absolute"></div>
+	 <div class="width-25 height-75 right absolute">
+	 	<% unless @design.photos.nil? %>
+	 		<% if @design.slider == true %>
+	 		<div id="imageSlider">
+				<% @design.photos.each do |photo| %>
+					<%= image_tag photo.image.url(:original) , width: "100%" , height: "100%" %>
+				<% end %>
+				
+			</div>
+			<% else %>
+				<%= image_tag @design.photos.first.image.url(:original), width: "100%", height: "100%" %>
+	 		<% end %>
+	 	<% end %>
+	 </div>
+	 </div>
+	 <div class="width-100 height-25 absolute bottom">
+	 <% if @design.slider == true %>
+	 <div id="textSlider" style="height:100px">
+	 	<% @design.photos.each do |photo| %>
+	 		<h4 class="slideText text-center" style="font-size:50px; font-weight:bold"><%= photo.title %></h4>
+	 	<% end %>
+	 </div>
+	 <% end %>
+	 <% if @design.ticker == true %>
+	 <div>
+	 <div class="marquee" style=" height: 100px;width:100%; background: red;"><p style=" color: white; font-weight:bold; font-size:50px;margin:10px 0px 0px 0px;"><%= @design.ticker_text %></p> </div>
+	 </div>
+	 <% end %>
+	 </div>
+<% elsif @design.layout_type == "e"
+	%>
+	<style type="text/css">
+	body{
+		background: white;
+	}
+	</style>
+	<h2 class="text-center" >Notice Heading <sub>Date: 20/10/1016</sub></h2>
+	<div class="notice-body">
+		<p class="text-justify" style="font-size:24px;">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque purus urna, mattis vitae aliquam eu, finibus et nisl. Aenean libero ligula, molestie eu risus a, tincidunt egestas augue. Donec vel ex sodales, dictum lectus eu, tincidunt tellus. Duis augue sapien, ornare eget neque vel, tristique tempus lectus. Vestibulum nec egestas arcu. Cras eu elit malesuada nulla porta posuere posuere et nunc. Phasellus porta et urna sed vestibulum. Morbi bibendum tristique lorem. Pellentesque malesuada, nibh quis elementum pretium, augue purus tincidunt felis, eu varius metus nunc eget ipsum. Sed imperdiet eget nisl a sagittis. Nunc commodo odio vitae lorem suscipit, in fermentum augue varius. Nam erat ligula, varius et ipsum condimentum, dictum porttitor mauris. Ut at molestie purus. Nunc eget ullamcorper nisi, id tincidunt nunc. Nam luctus dolor ipsum, posuere laoreet lacus vestibulum pellentesque. Ut gravida felis vel turpis consectetur consequat a in tellus.
+
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus id sapien libero. Duis at diam sapien. Maecenas pellentesque, elit nec finibus suscipit, metus justo aliquam mauris, placerat pellentesque dolor tortor non mi. Pellentesque hendrerit egestas velit, non sollicitudin lorem gravida hendrerit. Nulla dignissim, eros vel sollicitudin bibendum, tellus sapien tincidunt neque, ut scelerisque sapien nibh vel ipsum. Ut a pulvinar mauris. Etiam interdum semper bibendum. Praesent vitae ultricies orci, at semper quam. Cras quis augue et nunc imperdiet tincidunt sit amet vel ex. Sed porta mi sed diam vulputate, a aliquet lectus molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+Maecenas id consectetur tortor. Donec a ex quam. Duis id nisi porta, lobortis sapien semper, congue ligula. Donec et eros rhoncus, hendrerit neque quis, fermentum leo. Maecenas magna mauris, rhoncus ac condimentum vitae, dapibus ut turpis. Suspendisse potenti. Sed vulputate tristique neque a vestibulum.
+
+Nullam egestas, elit nec sodales varius, nulla sapien dignissim tellus, ut dapibus mauris elit vel diam. Aliquam in magna scelerisque, rutrum massa vitae, luctus massa. In hac habitasse platea dictumst. Praesent augue ex, ultrices a risus sed, hendrerit facilisis augue. Sed ornare nulla eu quam bibendum luctus. Ut auctor sapien vitae nisl ornare lobortis quis et nisl. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris hendrerit vehicula cursus. Duis ipsum sem, convallis nec urna et, semper sagittis nisi. Donec dictum maximus ex et mattis. Nam justo neque, lacinia nec elementum et, pellentesque ac purus. Maecenas finibus mauris id diam vulputate, id tempus sem vestibulum. Vestibulum dignissim diam vitae libero tincidunt condimentum. Phasellus venenatis augue vitae sagittis ultrices. Vivamus laoreet justo feugiat consequat tempor. Donec molestie venenatis turpis, nec tempor mi pulvinar nec.
+
+Mauris varius sapien nec felis lobortis blandit. Vestibulum finibus mauris id eleifend dignissim. Quisque sed justo tristique, gravida justo sit amet, tempor leo. Sed felis arcu, tincidunt id nunc id, faucibus mollis nisl. Integer fermentum felis lacus, nec lobortis lectus ullamcorper sit amet. Suspendisse vel ligula ornare, elementum nisi sit amet, interdum ligula. Fusce in turpis luctus, convallis ipsum a, vestibulum justo. Nulla placerat auctor ante non efficitur. Pellentesque pretium lectus posuere, scelerisque felis quis, placerat mi. Duis mi augue, accumsan vitae nisl et, convallis efficitur risus.
+		</p>
+	</div>
+<% end %>

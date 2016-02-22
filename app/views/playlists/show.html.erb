@@ -19,39 +19,39 @@
 		<div class="col-sm-8">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				<div class="row">
-          <div class="col-sm-2"><a href="/" class="btn btn-default">Back to All Playlist</a></div>
-          <div class="col-sm-8"><h4 class="text-center"><%= @playlist.name %></h4></div>
+          <div class="row">
+            <div class="col-sm-2"><a href="/" class="btn btn-default">Back to All Playlist</a></div>
+            <div class="col-sm-8"><h4 class="text-center"><%= @playlist.name %></h4></div>
           </div>
-</div>
-				<div class="panel-body">
-				<div class="link-split text-left">
-				<div class="row">
-					<div class="col-sm-2"><button type="button" data-toggle="modal" data-target="#layoutModal" class="btn btn-info">Set Layout</button></div>
-					<div class="col-sm-8"><p>Current Layout: <%= @design.layout_type %></p></div>
-				</div>
-				
-				</div>
-				<div class="video-container">
-				<% @playlist.videos.each do |video| %>
-					<div class="link-split" data-id="<%= video.id %>">
-					<div class="row">
-						<div class="col-sm-2"><%= image_tag video.movie.url(:thumb) %> </div>
-						<div class="col-sm-8"><%= link_to video.movie_file_name, video.movie.url(:original) %></div>
-						<div class="col-sm-2"><%= link_to "Delete Video", video_path(video), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
-					</div>
-					</div>
+        </div>
+        <div class="panel-body">
+          <div class="link-split text-left">
+            <div class="row">
+             <div class="col-sm-2"><button type="button" data-toggle="modal" data-target="#layoutModal" class="btn btn-info">Set Layout</button></div>
+             <div class="col-sm-8"><p>Current Layout: <%= @design.layout_type %></p></div>
+           </div>
 
-					<% end %>
-					</div>
-					<div class="link-split text-center">
-						<a data-target="#videoModal" data-toggle="modal" class="btn btn-primary text-center">Add Videos</a>
-					</div>
-				</div>
-				<!-- <div class="panel-footer"><button class="btn btn-success">Save</button></div> -->
-			</div>
-		</div>
-	</div>
+         </div>
+         <div class="video-container">
+          <% @playlist.videos.each do |video| %>
+          <div class="link-split" data-id="<%= video.id %>">
+           <div class="row">
+            <div class="col-sm-2"><%= image_tag video.movie.url(:thumb) %> </div>
+            <div class="col-sm-8"><%= link_to video.movie_file_name, video.movie.url(:original) %></div>
+            <div class="col-sm-2"><%= link_to "Delete Video", video_path(video), method: :delete, data: { disable_with: "Wait..." }, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %></div>
+          </div>
+        </div>
+
+        <% end %>
+      </div>
+      <div class="link-split text-center">
+        <a data-target="#videoModal" data-toggle="modal" class="btn btn-primary text-center">Add Videos</a>
+      </div>
+    </div>
+    <!-- <div class="panel-footer"><button class="btn btn-success">Save</button></div> -->
+  </div>
+</div>
+</div>
 </div>
 
 
@@ -64,20 +64,20 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="videoModalLabel">Upload Video</h4>
       </div>
-        <%= form_for :video, url: "/videos", method: "post", remote: true do |f| %>
+      <%= form_for :video, url: "/videos", method: "post", remote: true do |f| %>
       <div class="modal-body">
-		<div class="form-group">
-  			<%= f.file_field :movie , class: "form-control file-upload" %>
-  			<%= f.hidden_field :playlist_id, value: params[:id] %>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" value="save" class="btn btn-primary">Save changes</button>
-        <% end %>
-      </div>
+        <div class="form-group">
+         <%= f.file_field :movie , class: "form-control file-upload" %>
+         <%= f.hidden_field :playlist_id, value: params[:id] %>
+       </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="submit" value="save" class="btn btn-primary">Save changes</button>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -89,81 +89,85 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="layoutModalLabel">Select Layout for Playlist</h4>
       </div>
-        <%= nested_form_for @design, remote: true do |f| %>
+      <%= nested_form_for @design, remote: true do |f| %>
       <div class="modal-body">
-			<input type="hidden" value="<%= params[:id] %>" name="playlist_id">
-		<div class="radio-inline">
-			<label>
-				<!-- <input type="radio" name="design[layout_type]" id="design[layout_type]" value="a" checked> -->
-				<%= f.radio_button :layout_type,"a"  %>
-				<%= image_tag "a.jpg" %>
-				<p>Type "A"</p>
-			</label>
-		</div>
-		<div class="radio-inline">
-			<label>
-				<%= f.radio_button :layout_type,"b"  %>
-				<%= image_tag "b.jpg" %>
-
-				<p>Type "B"</p>
-			</label>
-		</div>
-		<div class="radio-inline">
-			<label>
-				<%= f.radio_button :layout_type,"c"  %>
-				<%= image_tag "c.jpg" %>
-
-				<p>Type "C"</p>
-			</label>
-		</div>
-		<div class="radio-inline">
-			<label>
-				<%= f.radio_button :layout_type,"d"  %>
-				<%= image_tag "d.jpg" %>
-
-				<p>Type "D"</p>
-			</label>
-		</div>
-		<div class="checkbox">
-			<label>
-				<%= f.check_box :ticker,{id: "ticker"} %>
-		    	<!-- <input type="checkbox" id="ticker" name="design[ticker]"> -->
-		    	Set Ticker?
-			</label>
-		</div>
-		<div class="form-group ticker-text" style=<%= @design.ticker ? "": "display:none;" %>>
-    		<label for="ticker_text">Ticker Text</label>
-    		<%= f.text_field :ticker_text, class: "form-control" %>
-    	</div>
-    	<div class="checkbox">
-			<label>
-				<%= f.check_box :slider,{id: "slider"} %>
-
-		    	Set Slider?
-			</label>
-		</div>
-		<div class="form-group photos">
-    	<%= f.fields_for :photos do |photo_form| %>
-  			<div class="row">
-  			<div class="col-sm-4">
-  			<% if photo_form.object.image? %>
-			<%= image_tag photo_form.object.image.url(:original), width: "100px" %>
-			<% end %>
-  			<%= photo_form.file_field :image , class: "form-control file-upload" %></div>
-  			<div class="col-sm-4"><%= photo_form.text_field :title , class: "form-control" %></div>
-  			<div class="col-sm-4"><%= photo_form.link_to_remove "Remove this Photo", class: "btn btn-danger" %></div>
-  			</div>
-		<% end %>
-		<p><%= f.link_to_add "Add a Photo", :photos, class: "photo-button" %></p>
-		</div>
+       <input type="hidden" value="<%= params[:id] %>" name="playlist_id">
+       <div class="radio-inline">
+          <label>
+            <%= f.radio_button :layout_type,"a"  %>
+            <%= image_tag "a.jpg" %>
+            <p>Type "A"</p>
+          </label>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" value="save" class="btn btn-primary">Save changes</button>
-        <% end %>
+      <div class="radio-inline">
+        <label>
+          <%= f.radio_button :layout_type,"b"  %>
+          <%= image_tag "b.jpg" %>
+          <p>Type "B"</p>
+        </label>
       </div>
-    </div>
-  </div>
+      <div class="radio-inline">
+        <label>
+          <%= f.radio_button :layout_type,"c"  %>
+          <%= image_tag "c.jpg" %>
+          <p>Type "C"</p>
+        </label>
+      </div>
+      <div class="radio-inline">
+        <label>
+          <%= f.radio_button :layout_type,"d"  %>
+          <%= image_tag "d.jpg" %>
+          <p>Type "D"</p>
+        </label>
+      </div>
+      <div class="radio-inline">
+        <label>
+          <%= f.radio_button :layout_type,"e" %>
+          <%= image_tag "d.jpg" %>
+          <p>Type "E"</p>
+        </label>
+      </div>
+      <div class="notice" style="display:none;">This Works</div>
+<div class="checkbox">
+ <label>
+  <%= f.check_box :ticker,{id: "ticker"} %>
+  <!-- <input type="checkbox" id="ticker" name="design[ticker]"> -->
+  Set Ticker?
+</label>
+</div>
+<div class="form-group ticker-text" style=<%= @design.ticker ? "": "display:none;" %>>
+  <label for="ticker_text">Ticker Text</label>
+  <%= f.text_field :ticker_text, class: "form-control" %>
+</div>
+<div class="checkbox">
+ <label>
+  <%= f.check_box :slider,{id: "slider"} %>
+
+  Set Slider?
+</label>
+</div>
+<div class="form-group photos">
+ <%= f.fields_for :photos do |photo_form| %>
+ <div class="row">
+   <div class="col-sm-4">
+     <% if photo_form.object.image? %>
+     <%= image_tag photo_form.object.image.url(:original), width: "100px" %>
+     <% end %>
+     <%= photo_form.file_field :image , class: "form-control file-upload" %></div>
+     <div class="col-sm-4"><%= photo_form.text_field :title , class: "form-control" %></div>
+     <div class="col-sm-4"><%= photo_form.link_to_remove "Remove this Photo", class: "btn btn-danger" %></div>
+   </div>
+   <% end %>
+   <p><%= f.link_to_add "Add a Photo", :photos, class: "photo-button" %></p>
+ </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <button type="submit" value="save" class="btn btn-primary">Save changes</button>
+  <% end %>
+</div>
+</div>
+</div>
 </div>
 
 <style>
@@ -177,15 +181,18 @@
 <script>
 
 	$('#ticker').click(function() {
-  $('.ticker-text')[this.checked ? "show" : "hide"]();
-});
+    $('.ticker-text')[this.checked ? "show" : "hide"]();
+  });
+  $('#design_layout_type_e').click(function() {
+    $('.notice')[$(this).is(":checked") ? "show" : "hide"]();
+  });
 	$('#slider').click(function() {
-  $('.photo-button')[this.checked ? "show" : "hide"]();
-});
+    $('.photo-button')[this.checked ? "show" : "hide"]();
+  });
 	
 	$('.photos').on('click', '.photo-button', function() {
-	$(".file-upload").fileinput({'showUpload':false, 'previewFileType':'any'});
-});
+   $(".file-upload").fileinput({'showUpload':false, 'previewFileType':'any'});
+ });
 
 	$(".file-upload").fileinput({'showUpload':false, 'previewFileType':'any'});
 </script>
