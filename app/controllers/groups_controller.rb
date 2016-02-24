@@ -10,6 +10,10 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    respond_to do |f|
+      f.html
+      f.json {render json: @group}
+    end
   end
 
   # GET /groups/new

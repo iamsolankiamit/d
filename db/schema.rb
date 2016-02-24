@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209010813) do
+ActiveRecord::Schema.define(version: 20160224060905) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -82,9 +82,10 @@ ActiveRecord::Schema.define(version: 20160209010813) do
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "playlist_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "version"
+    t.integer  "count",       default: 0
   end
 
   create_table "photos", force: :cascade do |t|
@@ -110,9 +111,10 @@ ActiveRecord::Schema.define(version: 20160209010813) do
 
   create_table "playlists", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "design_id"
+    t.integer  "version",    default: 0
   end
 
   add_index "playlists", ["design_id"], name: "index_playlists_on_design_id"

@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem "nested_form"
 gem 'remotipart', '~> 1.2'
 gem 'devise'
-
+gem 'paperclip-av-transcoder'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

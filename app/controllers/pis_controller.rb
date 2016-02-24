@@ -5,6 +5,13 @@ class PisController < ApplicationController
   # GET /pis.json
   def index
     @pis = Pi.all
+    if params[:uuid]
+      @pis = Pi.where(uid: params[:uuid])
+    end
+    respond_to do |format|
+      format.html
+      format.json {render json: @pis}
+    end
   end
 
   # GET /pis/1
